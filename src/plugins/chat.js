@@ -109,7 +109,7 @@ class Chat {
    */
   delete(filter, options) {
     const deletion = {
-      filter: typeof filter === 'string' ? { id: filter } : filter,
+      filter,
       moderatorID: options.moderator.id,
     };
 

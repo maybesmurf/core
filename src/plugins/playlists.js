@@ -1,6 +1,7 @@
 'use strict';
 
-const { groupBy, shuffle } = require('lodash');
+const { groupBy } = require('lodash');
+const shuffle = require('array-shuffle');
 const escapeStringRegExp = require('escape-string-regexp');
 const debug = require('debug')('uwave:playlists');
 const {

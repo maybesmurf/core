@@ -1,7 +1,7 @@
 'use strict';
 
 const { promisify } = require('util');
-const { debounce, isEmpty } = require('lodash');
+const { debounce } = require('lodash');
 const sjson = require('secure-json-parse');
 const WebSocket = require('ws');
 const Ajv = require('ajv').default;
@@ -281,7 +281,7 @@ class SocketServer {
             moderatorID,
             userID: filter.userID,
           });
-        } else if (isEmpty(filter)) {
+        } else {
           this.broadcast('chatDelete', { moderatorID });
         }
       },

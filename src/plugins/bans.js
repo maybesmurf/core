@@ -1,11 +1,12 @@
 'use strict';
 
-const { clamp, omit } = require('lodash');
 const escapeStringRegExp = require('escape-string-regexp');
 const {
   UserNotFoundError,
 } = require('../errors');
 const Page = require('../Page');
+const clamp = require('../utils/clamp');
+const omit = require('../utils/omit');
 
 /**
  * @typedef {import('../models').User} User
@@ -86,7 +87,7 @@ class Bans {
 
     const results = bannedUsers.map((user) => ({
       ...user.banned,
-      user: omit(user, ['banned']),
+      user: omit(user, 'banned'),
     }));
 
     return new Page(results, {

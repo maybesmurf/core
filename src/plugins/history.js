@@ -1,6 +1,6 @@
 'use strict';
 
-const { clamp } = require('lodash');
+const clamp = require('../utils/clamp');
 const Page = require('../Page');
 
 const DEFAULT_PAGE_SIZE = 50;

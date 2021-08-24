@@ -3,7 +3,7 @@
 const EventEmitter = require('events');
 const Ajv = require('ajv/dist/2019').default;
 const formats = require('ajv-formats').default;
-const { omit } = require('lodash');
+const omit = require('../utils/omit');
 const ValidationError = require('../errors/ValidationError');
 
 /** @typedef {import('../models').User} User */

@@ -7,7 +7,7 @@
 'use strict';
 
 const { ObjectId } = require('mongoose').mongo;
-const { zip } = require('lodash');
+const zip = require('../utils/zip');
 
 const rxObjectID = /^[0-9a-f]{24}$/;
 

@@ -1,6 +1,6 @@
 'use strict';
 
-const { clamp } = require('lodash');
+const clamp = require('../utils/clamp');
 const {
   PermissionError,
   UserNotFoundError,
