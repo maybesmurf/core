@@ -1,6 +1,5 @@
 'use strict';
 
-const { flatten } = require('lodash');
 const debug = require('debug')('uwave:acl');
 const defaultRoles = require('../config/defaultRoles');
 const routes = require('../routes/acl');
@@ -33,7 +32,7 @@ async function getSubRoles(role) {
   const relatedRoles = role.roles;
 
   const roles = await Promise.all(relatedRoles.map(getSubRoles));
-  return [role, ...flatten(roles)];
+  return [role, ...roles.flat()];
 }
 
 /**
@@ -52,7 +51,7 @@ async function getAllUserRoles(user) {
   const baseRoles = user.roles;
 
   const roles = await Promise.all(baseRoles.map(getSubRoles));
-  return flatten(roles);
+  return roles.flat();
 }
 
 /**
@@ -140,7 +139,7 @@ class Acl {
     const subRoles = await Promise.all(roles.map(getSubRoles));
     return {
       name,
-      permissions: flatten(subRoles).map((role) => role._id),
+      permissions: subRoles.flat().map((role) => role._id),
     };
   }
 

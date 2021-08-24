@@ -1,7 +1,7 @@
 'use strict';
 
+const { isDeepStrictEqual } = require('util');
 const debug = require('debug')('uwave:http:search');
-const { isEqual } = require('lodash');
 const { SourceNotFoundError } = require('../errors');
 const toListResponse = require('../utils/toListResponse');
 
@@ -93,7 +93,7 @@ async function search(req) {
     mediaBySourceID.set(media.sourceID, media);
 
     const freshMedia = searchResultsByID.get(media.sourceID);
-    if (freshMedia && !isEqual(media.sourceData, freshMedia.sourceData)) {
+    if (freshMedia && !isDeepStrictEqual(media.sourceData, freshMedia.sourceData)) {
       mediasNeedSourceDataUpdate.set(media._id, freshMedia.sourceData);
     }
   });

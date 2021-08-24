@@ -1,6 +1,6 @@
 'use strict';
 
-const { escapeRegExp } = require('lodash');
+const escapeRegExp = require('escape-string-regexp');
 
 /**
  * @template TArg,TRet
