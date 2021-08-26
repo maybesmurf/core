@@ -1,6 +1,5 @@
 'use strict';
 
-const { groupBy } = require('lodash');
 const shuffle = require('array-shuffle');
 const escapeStringRegExp = require('escape-string-regexp');
 const debug = require('debug')('uwave:playlists');
@@ -13,6 +12,7 @@ const {
 } = require('../errors');
 const Page = require('../Page');
 const routes = require('../routes/playlists');
+const groupBy = require('../utils/groupBy');
 
 /**
  * @typedef {import('mongodb').ObjectId} ObjectId
@@ -451,7 +451,7 @@ class PlaylistsRepository {
 
     // Group by source so we can retrieve all unknown medias from the source in
     // one call.
-    const itemsBySourceType = groupBy(items, 'sourceType');
+    const itemsBySourceType = groupBy(items, (item) => item.sourceType);
     /**
      * @type {{ media: Media, artist: string, title: string, start: number, end: number }[]}
      */
