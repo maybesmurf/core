@@ -6,10 +6,10 @@ import {
   PlaylistNotFoundError,
   CannotSelfFavoriteError,
 } from '../errors/index.js';
-import getOffsetPagination from '../utils/getOffsetPagination.js';
-import toItemResponse from '../utils/toItemResponse.js';
-import toListResponse from '../utils/toListResponse.js';
-import toPaginatedResponse from '../utils/toPaginatedResponse.js';
+import getOffsetPagination from '../utils/getOffsetPagination.mjs';
+import toItemResponse from '../utils/toItemResponse.mjs';
+import toListResponse from '../utils/toListResponse.mjs';
+import toPaginatedResponse from '../utils/toPaginatedResponse.mjs';
 
 const { ObjectId } = mongoose.Types;
 

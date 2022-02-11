@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 import Uwave from './Uwave.js';
-import HttpApi from './HttpApi.js';
+import HttpApi from './HttpApi.mjs';
 import SocketServer from './SocketServer.mjs';
 
 /**

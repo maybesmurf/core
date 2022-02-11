@@ -1,13 +1,13 @@
 import createDebug from 'debug';
-import { HTTPError, PermissionError, UserNotFoundError } from '../errors/index.js';
-import skipIfCurrentDJ from '../utils/skipIfCurrentDJ.js';
-import removeFromWaitlist from '../utils/removeFromWaitlist.js';
-import getOffsetPagination from '../utils/getOffsetPagination.js';
-import toItemResponse from '../utils/toItemResponse.js';
-import toListResponse from '../utils/toListResponse.js';
-import toPaginatedResponse from '../utils/toPaginatedResponse.js';
-import beautifyDuplicateKeyError from '../utils/beautifyDuplicateKeyError.js';
-import { muteUser, unmuteUser } from './chat.js';
+import { HTTPError, PermissionError, UserNotFoundError } from '../errors/index.mjs';
+import skipIfCurrentDJ from '../utils/skipIfCurrentDJ.mjs';
+import removeFromWaitlist from '../utils/removeFromWaitlist.mjs';
+import getOffsetPagination from '../utils/getOffsetPagination.mjs';
+import toItemResponse from '../utils/toItemResponse.mjs';
+import toListResponse from '../utils/toListResponse.mjs';
+import toPaginatedResponse from '../utils/toPaginatedResponse.mjs';
+import beautifyDuplicateKeyError from '../utils/beautifyDuplicateKeyError.mjs';
+import { muteUser, unmuteUser } from './chat.mjs';
 
 const debug = createDebug('uwave:http:users');
 
