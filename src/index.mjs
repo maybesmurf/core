@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 import Uwave from './Uwave.js';
 import HttpApi from './HttpApi.js';
-import SocketServer from './SocketServer.js';
+import SocketServer from './SocketServer.mjs';
 
 /**
  * @param {import('./Uwave').Options} opts
