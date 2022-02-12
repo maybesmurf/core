@@ -10,15 +10,12 @@
     "Goz3rr <goz3rr@gmail.com>",
     "Renée Kooi <renee@kooi.me>"
   ],
-  "main": "src/index.js",
+  "main": "src/index.mjs",
   "exports": {
-    ".": {
-      "import": "./src/index.mjs",
-      "default": "./src/index.js"
-    },
+    ".": "./src/index.mjs",
     "./package.json": "./package.json"
   },
-  "type": "commonjs",
+  "type": "module",
   "bin": {
     "u-wave-core": "bin/u-wave-core"
   },

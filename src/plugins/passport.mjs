@@ -8,6 +8,7 @@ import JWTStrategy from '../auth/JWTStrategy.mjs';
 
 const require = createRequire(import.meta.url);
 const schema = require('../schemas/socialAuth.json');
+
 const debug = createDebug('uwave:passport');
 
 /**

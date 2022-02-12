@@ -1,4 +1,3 @@
-import path from 'path';
 import RedLock from 'redlock';
 import { Umzug } from 'umzug';
 import createDebug from 'debug';
@@ -93,7 +92,7 @@ async function migrationsPlugin(uw) {
   uw.migrate = migrate;
 
   await uw.migrate({
-    glob: ['*.js', { cwd: path.join(__dirname, '../migrations') }],
+    glob: ['*.js', { cwd: new URL('../migrations', import.meta.url).pathname }],
   });
 }
 

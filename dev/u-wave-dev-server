@@ -1,16 +1,19 @@
 #!/usr/bin/env node
 
-require('make-promises-safe');
-const { Buffer } = require('buffer');
-const argv = require('minimist')(process.argv.slice(2));
-const concat = require('concat-stream');
-const explain = require('explain-error');
-const announce = require('u-wave-announce');
-const ytSource = require('u-wave-source-youtube');
-const scSource = require('u-wave-source-soundcloud');
-const recaptchaTestKeys = require('recaptcha-test-keys');
-const debug = require('debug')('uwave:dev-server');
-const dotenv = require('dotenv');
+import 'make-promises-safe';
+import { Buffer } from 'buffer';
+import minimist from 'minimist';
+import concat from 'concat-stream';
+import explain from 'explain-error';
+import announce from 'u-wave-announce';
+import ytSource from 'u-wave-source-youtube';
+import scSource from 'u-wave-source-soundcloud';
+import recaptchaTestKeys from 'recaptcha-test-keys';
+import createDebug from 'debug';
+import dotenv from 'dotenv';
+
+const debug = createDebug('uwave:dev-server');
+const argv = minimist(process.argv.slice(2));
 
 dotenv.config();
 
@@ -34,7 +37,7 @@ const testTransport = {
 async function start() {
   const port = Number(argv.port || process.env.PORT || 6042);
 
-  const uwave = require('..');
+  const uwave = await import('u-wave-core');
 
   const secret = Buffer.from('none', 'utf8');
 

@@ -1,7 +1,7 @@
 import { promisify } from 'util';
 import lodash from 'lodash';
 import sjson from 'secure-json-parse';
-import WebSocket from 'ws';
+import { WebSocketServer } from 'ws';
 import Ajv from 'ajv';
 import ms from 'ms';
 import createDebug from 'debug';
@@ -56,21 +56,21 @@ options are used to attach the WebSocket server to the correct HTTP server.
 An example of how to attach the WebSocket server to an existing HTTP server
 using Express:
 
-    const { createSocketServer } = require('u-wave-http-api');
+    import { SocketServer } from 'u-wave-core';
     const app = express();
     const server = app.listen(80);
 
-    createSocketServer(uwave, {
+    new SocketServer(uwave, {
       server: server,
       /* ... */
     });
 
 Alternatively, you can provide a port for the socket server to listen on:
 
-    const { createSocketServer } = require('u-wave-http-api');
+    import { SocketServer } from 'u-wave-core';
     const app = express();
 
-    createSocketServer(uwave, {
+    new SocketServer(uwave, {
       port: 6042,
       /* ... */
     });
@@ -180,7 +180,7 @@ class SocketServer {
     // TODO put this behind a symbol, it's just public for tests
     this.authRegistry = new AuthRegistry(uw.redis);
 
-    this.#wss = new WebSocket.Server({
+    this.#wss = new WebSocketServer({
       server: options.server,
       port: options.server ? undefined : options.port,
     });
