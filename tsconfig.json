@@ -2,6 +2,7 @@
   "extends": "@tsconfig/node12/tsconfig.json",
   "compilerOptions": {
     "strict": true,
+    "module": "node12",
     "useUnknownInCatchVariables": false,
     "allowJs": true,
     "checkJs": true,
@@ -11,7 +12,7 @@
     "emitDeclarationOnly": true
   },
   "include": [
-    "src/**/*.js",
+    "src/**/*.mjs",
     "src/**/*.ts",
     "src/schemas/*.json"
   ]

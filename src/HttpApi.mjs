@@ -69,7 +69,7 @@ function defaultCreatePasswordResetEmail({ token, requestUrl }) {
  */
 
 /**
- * @param {import('./Uwave')} uw
+ * @param {import('./Uwave.mjs').default} uw
  * @param {HttpApiOptions} options
  */
 async function httpApi(uw, options) {
@@ -146,7 +146,7 @@ async function httpApi(uw, options) {
 }
 
 /**
- * @param {import('./Uwave')} uw
+ * @param {import('./Uwave.mjs').default} uw
  */
 async function errorHandling(uw) {
   debug('after');

@@ -21,8 +21,8 @@ function appendQuery(base, query) {
 /**
  * @template {any} TItem
  * @template {{ offset: number }} TPagination
- * @param {import('../Page')<TItem, TPagination>} page
- * @param {{ baseUrl?: string, included?: toListResponse.IncludedOptions }} options
+ * @param {import('../Page.mjs').default<TItem, TPagination>} page
+ * @param {{ baseUrl?: string, included?: import('./toListResponse.mjs').IncludedOptions }} options
  */
 function toPaginatedResponse(
   page,

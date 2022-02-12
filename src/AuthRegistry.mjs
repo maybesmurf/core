@@ -14,7 +14,7 @@ class AuthRegistry {
   }
 
   /**
-   * @param {import('./models').User} user
+   * @param {import('./models/index.mjs').User} user
    */
   async createAuthToken(user) {
     const token = (await randomBytes(64)).toString('hex');
