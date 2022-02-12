@@ -1,4 +1,4 @@
-import UwaveError from './UwaveError.js';
+import UwaveError from './UwaveError.mjs';
 
 class ValidationError extends UwaveError {
   /**

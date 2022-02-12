@@ -1,7 +1,7 @@
 import assert from 'assert';
 import supertest from 'supertest';
 import sinon from 'sinon';
-import { Source } from '../src/Source.js';
+import { Source } from '../src/Source.mjs';
 import createUwave from './utils/createUwave.mjs';
 
 describe('Media Sources', () => {

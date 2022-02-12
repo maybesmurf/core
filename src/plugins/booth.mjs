@@ -1,9 +1,11 @@
 import ms from 'ms';
 import RedLock from 'redlock';
 import createDebug from 'debug';
-import { omit } from 'lodash';
+import lodash from 'lodash';
 import { EmptyPlaylistError, PlaylistItemNotFoundError } from '../errors/index.mjs';
 import routes from '../routes/booth.mjs';
+
+const { omit } = lodash;
 
 /**
  * @typedef {import('../models').User} User
