@@ -5,7 +5,7 @@ import {
   HistoryEntryNotFoundError,
   PlaylistNotFoundError,
   CannotSelfFavoriteError,
-} from '../errors/index.js';
+} from '../errors/index.mjs';
 import getOffsetPagination from '../utils/getOffsetPagination.mjs';
 import toItemResponse from '../utils/toItemResponse.mjs';
 import toListResponse from '../utils/toListResponse.mjs';
