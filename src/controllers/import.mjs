@@ -2,7 +2,7 @@
 import { SourceNotFoundError, SourceNoImportError, APIError } from '../errors/index.mjs';
 
 /**
- * @param {import('../types').Request} req
+ * @param {import('../types.mjs').Request} req
  */
 const getImportableSource = (req) => {
   const uw = req.uwave;
@@ -20,7 +20,7 @@ const getImportableSource = (req) => {
 };
 
 /**
- * @param {import('../types').Request} req
+ * @param {import('../types.mjs').Request} req
  */
 const mergeImportParameters = (req) => ({
   ...req.query,
@@ -29,7 +29,7 @@ const mergeImportParameters = (req) => ({
 });
 
 /**
- * @type {import('../types').AuthenticatedController}
+ * @type {import('../types.mjs').AuthenticatedController}
  */
 async function importAction(req) {
   const source = getImportableSource(req);

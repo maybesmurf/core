@@ -6,7 +6,7 @@ import schema from '../middleware/schema.mjs';
 import * as controller from '../controllers/authenticate.mjs';
 
 /**
- * @param {import('../controllers/authenticate').AuthenticateOptions} options
+ * @param {import('../controllers/authenticate.mjs').AuthenticateOptions} options
  * @returns {import('express').RequestHandler}
  */
 function withOptions(options) {
@@ -18,7 +18,7 @@ function withOptions(options) {
 
 /**
  * @param {import('passport').Authenticator} passport
- * @param {import('../controllers/authenticate').AuthenticateOptions} options
+ * @param {import('../controllers/authenticate.mjs').AuthenticateOptions} options
  */
 function authenticateRoutes(passport, options) {
   const auth = Router()
@@ -91,7 +91,7 @@ function authenticateRoutes(passport, options) {
       passport.authenticate('google'),
       withOptions(options),
       (rawReq, res, next) => {
-        /** @type {import('../types').AuthenticatedRequest & controller.WithAuthOptions} */
+        /** @type {import('../types.mjs').AuthenticatedRequest & controller.WithAuthOptions} */
         // Correct type is guaranteed by `passport.authenticate()` and `withOptions()` middlewares.
         const req = /** @type {any} */ (rawReq);
         controller.socialLoginCallback('google', req, res).catch(next);

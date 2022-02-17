@@ -3,7 +3,7 @@ import { Strategy } from 'passport';
 import jwt from 'jsonwebtoken';
 import { BannedError } from '../errors/index.mjs';
 
-/** @typedef {import('../models').User} User */
+/** @typedef {import('../models/index.mjs').User} User */
 
 /**
  * @param {Record<string, string>} cookies

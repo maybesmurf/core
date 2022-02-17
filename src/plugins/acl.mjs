@@ -5,8 +5,8 @@ import routes from '../routes/acl.mjs';
 const debug = createDebug('uwave:acl');
 
 /**
- * @typedef {import('../models').AclRole} AclRole
- * @typedef {import('../models').User} User
+ * @typedef {import('../models/index.mjs').AclRole} AclRole
+ * @typedef {import('../models/index.mjs').User} User
  * @typedef {{ roles: AclRole[] }} PopulateRoles
  * @typedef {Omit<AclRole, 'roles'> & PopulateRoles} PopulatedAclRole
  */
@@ -25,7 +25,7 @@ class Acl {
   #uw;
 
   /**
-   * @param {import('../Uwave')} uw
+   * @param {import('../Uwave.mjs').default} uw
    */
   constructor(uw) {
     this.#uw = uw;
@@ -218,7 +218,7 @@ class Acl {
 }
 
 /**
- * @param {import('../Uwave').Boot} uw
+ * @param {import('../Uwave.mjs').Boot} uw
  */
 async function aclPlugin(uw) {
   uw.acl = new Acl(uw);

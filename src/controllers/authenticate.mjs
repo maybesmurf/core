@@ -43,7 +43,7 @@ function seconds(str) {
 }
 
 /**
- * @type {import('../types').Controller}
+ * @type {import('../types.mjs').Controller}
  */
 async function getCurrentUser(req) {
   return toItemResponse(req.user || null, {
@@ -52,7 +52,7 @@ async function getCurrentUser(req) {
 }
 
 /**
- * @type {import('../types').Controller}
+ * @type {import('../types.mjs').Controller}
  */
 async function getAuthStrategies(req) {
   const { passport } = req.uwave;
@@ -67,8 +67,8 @@ async function getAuthStrategies(req) {
 
 /**
  * @param {import('express').Response} res
- * @param {import('../HttpApi').HttpApi} api
- * @param {import('../models').User} user
+ * @param {import('../HttpApi.mjs').HttpApi} api
+ * @param {import('../models/index.mjs').User} user
  * @param {AuthenticateOptions & { session: 'cookie' | 'token' }} options
  */
 async function refreshSession(res, api, user, options) {
@@ -101,7 +101,7 @@ async function refreshSession(res, api, user, options) {
  * @typedef {object} LoginQuery
  * @prop {'cookie'|'token'} [session]
  *
- * @param {import('../types').AuthenticatedRequest<{}, LoginQuery, {}> & WithAuthOptions} req
+ * @param {import('../types.mjs').AuthenticatedRequest<{}, LoginQuery, {}> & WithAuthOptions} req
  * @param {import('express').Response} res
  */
 async function login(req, res) {
@@ -130,14 +130,14 @@ async function login(req, res) {
 }
 
 /**
- * @param {import('../Uwave')} uw
- * @param {import('../models').User} user
+ * @param {import('../Uwave.mjs').default} uw
+ * @param {import('../models/index.mjs').User} user
  * @param {string} service
  */
 async function getSocialAvatar(uw, user, service) {
   const { Authentication } = uw.models;
 
-  /** @type {import('../models').Authentication?} */
+  /** @type {import('../models/index.mjs').Authentication?} */
   const auth = await Authentication.findOne({
     user: user._id,
     type: service,
@@ -150,7 +150,7 @@ async function getSocialAvatar(uw, user, service) {
 
 /**
  * @param {string} service
- * @param {import('../types').AuthenticatedRequest & WithAuthOptions} req
+ * @param {import('../types.mjs').AuthenticatedRequest & WithAuthOptions} req
  * @param {import('express').Response} res
  */
 async function socialLoginCallback(service, req, res) {
@@ -223,7 +223,7 @@ async function socialLoginCallback(service, req, res) {
 
 /**
  * @param {string} service
- * @param {import('../types').Request<{}, SocialLoginFinishQuery, SocialLoginFinishBody> &
+ * @param {import('../types.mjs').Request<{}, SocialLoginFinishQuery, SocialLoginFinishBody> &
  *         WithAuthOptions} req
  * @param {import('express').Response} res
  */
@@ -273,7 +273,7 @@ async function socialLoginFinish(service, req, res) {
 }
 
 /**
- * @type {import('../types').AuthenticatedController}
+ * @type {import('../types.mjs').AuthenticatedController}
  */
 async function getSocketToken(req) {
   const { user } = req;
@@ -322,7 +322,7 @@ async function verifyCaptcha(responseString, options) {
  */
 
 /**
- * @param {import('../types').Request<{}, {}, RegisterBody> & WithAuthOptions} req
+ * @param {import('../types.mjs').Request<{}, {}, RegisterBody> & WithAuthOptions} req
  */
 async function register(req) {
   const { users } = req.uwave;
@@ -358,7 +358,7 @@ async function register(req) {
  */
 
 /**
- * @param {import('../types').Request<{}, {}, RequestPasswordResetBody> & WithAuthOptions} req
+ * @param {import('../types.mjs').Request<{}, {}, RequestPasswordResetBody> & WithAuthOptions} req
  */
 async function reset(req) {
   const uw = req.uwave;
@@ -400,7 +400,7 @@ async function reset(req) {
  */
 
 /**
- * @type {import('../types').Controller<ChangePasswordParams, {}, ChangePasswordBody>}
+ * @type {import('../types.mjs').Controller<ChangePasswordParams, {}, ChangePasswordBody>}
  */
 async function changePassword(req) {
   const { users, redis } = req.uwave;
@@ -429,7 +429,7 @@ async function changePassword(req) {
 }
 
 /**
- * @param {import('../types').AuthenticatedRequest<{}, {}, {}> & WithAuthOptions} req
+ * @param {import('../types.mjs').AuthenticatedRequest<{}, {}, {}> & WithAuthOptions} req
  * @param {import('express').Response} res
  */
 async function logout(req, res) {

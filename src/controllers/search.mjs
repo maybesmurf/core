@@ -6,12 +6,12 @@ import toListResponse from '../utils/toListResponse.mjs';
 const { isEqual } = lodash;
 const debug = createDebug('uwave:http:search');
 
-/** @typedef {import('../models').Playlist} Playlist */
-/** @typedef {import('../plugins/playlists').PlaylistItemDesc} PlaylistItemDesc */
+/** @typedef {import('../models/index.mjs').Playlist} Playlist */
+/** @typedef {import('../plugins/playlists.mjs').PlaylistItemDesc} PlaylistItemDesc */
 
 // TODO should be deprecated once the Web client uses the better single-source route.
 /**
- * @type {import('../types').AuthenticatedController<never, SearchQuery, never>}
+ * @type {import('../types.mjs').AuthenticatedController<never, SearchQuery, never>}
  */
 async function searchAll(req) {
   const { user } = req;
@@ -36,7 +36,7 @@ async function searchAll(req) {
 }
 
 /**
- * @param {import('../Uwave')} uw
+ * @param {import('../Uwave.mjs').default} uw
  * @param {Map<string, Record<string, unknown>>} updates
  */
 async function updateSourceData(uw, updates) {
@@ -66,7 +66,7 @@ async function updateSourceData(uw, updates) {
 */
 
 /**
- * @type {import('../types').AuthenticatedController<SearchParams, SearchQuery, never>}
+ * @type {import('../types.mjs').AuthenticatedController<SearchParams, SearchQuery, never>}
  */
 async function search(req) {
   const { user } = req;
@@ -93,13 +93,13 @@ async function search(req) {
   // features in the source implementation.
   const mediasNeedSourceDataUpdate = new Map();
 
-  /** @type {import('../models').Media[]} */
+  /** @type {import('../models/index.mjs').Media[]} */
   const mediasInSearchResults = await Media.find({
     sourceType: sourceName,
     sourceID: { $in: Array.from(searchResultsByID.keys()) },
   });
 
-  /** @type {Map<string, import('../models').Media>} */
+  /** @type {Map<string, import('../models/index.mjs').Media>} */
   const mediaBySourceID = new Map();
   mediasInSearchResults.forEach((media) => {
     mediaBySourceID.set(media.sourceID, media);

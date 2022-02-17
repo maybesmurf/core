@@ -7,7 +7,7 @@ import { IncorrectPasswordError, UserNotFoundError } from '../errors/index.mjs';
 const debug = createDebug('uwave:users');
 
 /**
- * @typedef {import('../models').User} User
+ * @typedef {import('../models/index.mjs').User} User
  */
 
 /**
@@ -28,7 +28,7 @@ class UsersRepository {
   #uw;
 
   /**
-   * @param {import('../Uwave')} uw
+   * @param {import('../Uwave.mjs').default} uw
    */
   constructor(uw) {
     this.#uw = uw;
@@ -125,7 +125,7 @@ class UsersRepository {
   async localLogin({ email, password }) {
     const { Authentication } = this.#uw.models;
 
-    /** @type {null | (import('../models').Authentication & { user: User })} */
+    /** @type {null | (import('../models/index.mjs').Authentication & { user: User })} */
     const auth = /** @type {any} */ (await Authentication.findOne({
       email: email.toLowerCase(),
     }).populate('user').exec());
@@ -179,7 +179,7 @@ class UsersRepository {
     // we need this type assertion because the `user` property actually contains
     // an ObjectId in this return value. We are definitely filling in a User object
     // below before using this variable.
-    /** @type {null | (Omit<import('../models').Authentication, 'user'> & { user: User })} */
+    /** @type {null | (Omit<import('../models/index.mjs').Authentication, 'user'> & { user: User })} */
     let auth = await Authentication.findOne({ type, id });
     if (auth) {
       await auth.populate('user');
@@ -351,7 +351,7 @@ class UsersRepository {
 }
 
 /**
- * @param {import('../Uwave')} uw
+ * @param {import('../Uwave.mjs').default} uw
  */
 async function usersPlugin(uw) {
   uw.users = new UsersRepository(uw);

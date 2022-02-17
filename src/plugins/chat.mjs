@@ -1,7 +1,7 @@
 import routes from '../routes/chat.mjs';
 
 /**
- * @typedef {import('../models').User} User
+ * @typedef {import('../models/index.mjs').User} User
  *
  * @typedef {object} ChatOptions
  * @prop {number} maxLength
@@ -21,7 +21,7 @@ class Chat {
   #options;
 
   /**
-   * @param {import('../Uwave')} uw
+   * @param {import('../Uwave.mjs').default} uw
    * @param {Partial<ChatOptions>} [options]
    */
   constructor(uw, options = {}) {
@@ -118,7 +118,7 @@ class Chat {
 }
 
 /**
- * @param {import('../Uwave')} uw
+ * @param {import('../Uwave.mjs').default} uw
  * @param {Partial<ChatOptions>} [options]
  */
 async function chatPlugin(uw, options = {}) {

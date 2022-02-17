@@ -1,12 +1,12 @@
 /**
- * @param {import('../Uwave')} uw
+ * @param {import('../Uwave.mjs').default} uw
  */
 function getWaitingUserIDs(uw) {
   return uw.redis.lrange('waitlist', 0, -1);
 }
 
 /**
- * @param {import('../Uwave')} uw
+ * @param {import('../Uwave.mjs').default} uw
  * @param {import('mongodb').ObjectId} userID
  */
 async function removeFromWaitlist(uw, userID) {

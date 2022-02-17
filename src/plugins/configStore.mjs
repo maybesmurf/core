@@ -8,7 +8,7 @@ import ValidationError from '../errors/ValidationError.mjs';
 const { omit } = lodash;
 const require = createRequire(import.meta.url);
 
-/** @typedef {import('../models').User} User */
+/** @typedef {import('../models/index.mjs').User} User */
 
 /**
  * Extensible configuration store.
@@ -26,7 +26,7 @@ class ConfigStore {
   #registry = new Map();
 
   /**
-   * @param {import('../Uwave')} uw
+   * @param {import('../Uwave.mjs').default} uw
    */
   constructor(uw) {
     this.#uw = uw;
@@ -171,7 +171,7 @@ class ConfigStore {
 }
 
 /**
- * @param {import('../Uwave')} uw
+ * @param {import('../Uwave.mjs').default} uw
  */
 async function configStorePlugin(uw) {
   uw.config = new ConfigStore(uw);

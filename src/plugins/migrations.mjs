@@ -12,7 +12,7 @@ function log(record) {
 }
 
 /**
- * @typedef {import('../Uwave')} Uwave
+ * @typedef {import('../Uwave.mjs').default} Uwave
  */
 
 /**
@@ -56,12 +56,12 @@ const mongooseStorage = {
 };
 
 /**
- * @typedef {import('umzug').InputMigrations<import('../Uwave')>} MigrateOptions
+ * @typedef {import('umzug').InputMigrations<import('../Uwave.mjs').default>} MigrateOptions
  * @typedef {(opts: MigrateOptions) => Promise<void>} Migrate
  */
 
 /**
- * @param {import('../Uwave')} uw
+ * @param {import('../Uwave.mjs').default} uw
  */
 async function migrationsPlugin(uw) {
   const redLock = new RedLock([uw.redis]);

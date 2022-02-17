@@ -1,9 +1,9 @@
 import { SourceNoImportError } from './errors/index.mjs';
 
 /**
- * @typedef {import('./models').User} User
- * @typedef {import('./models').Playlist} Playlist
- * @typedef {import('./plugins/playlists').PlaylistItemDesc} PlaylistItemDesc
+ * @typedef {import('./models/index.mjs').User} User
+ * @typedef {import('./models/index.mjs').Playlist} Playlist
+ * @typedef {import('./plugins/playlists.mjs').PlaylistItemDesc} PlaylistItemDesc
  */
 
 /**
@@ -34,7 +34,7 @@ import { SourceNoImportError } from './errors/index.mjs';
  */
 class SourceContext {
   /**
-   * @param {import('./Uwave')} uw
+   * @param {import('./Uwave.mjs').default} uw
    * @param {Source} source
    * @param {User} user
    */
@@ -79,7 +79,7 @@ class ImportContext extends SourceContext {
  */
 class Source {
   /**
-   * @param {import('./Uwave')} uw
+   * @param {import('./Uwave.mjs').default} uw
    * @param {string} sourceType
    * @param {SourcePlugin} sourcePlugin
    */

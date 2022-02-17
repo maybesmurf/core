@@ -12,7 +12,7 @@ const schema = require('../schemas/socialAuth.json');
 const debug = createDebug('uwave:passport');
 
 /**
- * @typedef {import('../models/User').User} User
+ * @typedef {import('../models/User.mjs').User} User
  *
  * @typedef {{
  *   callbackURL?: string,
@@ -32,7 +32,7 @@ class PassportPlugin extends Passport {
   #uw;
 
   /**
-   * @param {import('../Uwave')} uw
+   * @param {import('../Uwave.mjs').default} uw
    * @param {{ secret: Buffer|string }} options
    */
   constructor(uw, options) {
@@ -155,7 +155,7 @@ class PassportPlugin extends Passport {
 }
 
 /**
- * @param {import('../Uwave')} uw
+ * @param {import('../Uwave.mjs').default} uw
  * @param {{ secret: Buffer|string }} options
  */
 async function passportPlugin(uw, options) {

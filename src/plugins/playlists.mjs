@@ -18,11 +18,11 @@ const debug = createDebug('uwave:playlists');
  * @typedef {import('mongoose').PipelineStage} PipelineStage
  * @typedef {import('mongoose').PipelineStage.Facet['$facet'][string]} FacetPipelineStage
  * @typedef {import('mongodb').ObjectId} ObjectId
- * @typedef {import('../models').User} User
- * @typedef {import('../models').Playlist} Playlist
- * @typedef {import('../models/Playlist').LeanPlaylist} LeanPlaylist
- * @typedef {import('../models').PlaylistItem} PlaylistItem
- * @typedef {import('../models').Media} Media
+ * @typedef {import('../models/index.mjs').User} User
+ * @typedef {import('../models/index.mjs').Playlist} Playlist
+ * @typedef {import('../models/Playlist.mjs').LeanPlaylist} LeanPlaylist
+ * @typedef {import('../models/index.mjs').PlaylistItem} PlaylistItem
+ * @typedef {import('../models/index.mjs').Media} Media
  * @typedef {{ media: Media }} PopulateMedia
  */
 
@@ -87,7 +87,7 @@ class PlaylistsRepository {
   #uw;
 
   /**
-   * @param {import('../Uwave')} uw
+   * @param {import('../Uwave.mjs').default} uw
    */
   constructor(uw) {
     this.#uw = uw;
@@ -605,7 +605,7 @@ class PlaylistsRepository {
 }
 
 /**
- * @param {import('../Uwave')} uw
+ * @param {import('../Uwave.mjs').default} uw
  */
 async function playlistsPlugin(uw) {
   uw.playlists = new PlaylistsRepository(uw);

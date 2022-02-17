@@ -6,9 +6,9 @@ const debug = createDebug('uwave:api:sockets:guest');
 
 class GuestConnection extends EventEmitter {
   /**
-   * @param {import('../Uwave')} uw
-   * @param {import('ws')} socket
-   * @param {{ authRegistry: import('../AuthRegistry') }} options
+   * @param {import('../Uwave.mjs').default} uw
+   * @param {import('ws').WebSocket} socket
+   * @param {{ authRegistry: import('../AuthRegistry.mjs').default }} options
    */
   constructor(uw, socket, options) {
     super();
@@ -61,7 +61,7 @@ class GuestConnection extends EventEmitter {
   }
 
   /**
-   * @param {import('../models').User} user
+   * @param {import('../models/index.mjs').User} user
    */
   isReconnect(user) {
     return this.uw.redis.exists(`http-api:disconnected:${user.id}`);

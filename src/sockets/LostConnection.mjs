@@ -5,8 +5,8 @@ const debug = createDebug('uwave:api:sockets:lost');
 
 class LostConnection extends EventEmitter {
   /**
-   * @param {import('../Uwave')} uw
-   * @param {import('../models').User} user
+   * @param {import('../Uwave.mjs').default} uw
+   * @param {import('../models/index.mjs').User} user
    */
   constructor(uw, user, timeout = 30) {
     super();

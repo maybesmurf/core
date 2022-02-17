@@ -8,12 +8,12 @@ import routes from '../routes/booth.mjs';
 const { omit } = lodash;
 
 /**
- * @typedef {import('../models').User} User
- * @typedef {import('../models').Playlist} Playlist
- * @typedef {import('../models').PlaylistItem} PlaylistItem
- * @typedef {import('../models').HistoryEntry} HistoryEntry
- * @typedef {import('../models/History').HistoryMedia} HistoryMedia
- * @typedef {import('../models').Media} Media
+ * @typedef {import('../models/index.mjs').User} User
+ * @typedef {import('../models/index.mjs').Playlist} Playlist
+ * @typedef {import('../models/index.mjs').PlaylistItem} PlaylistItem
+ * @typedef {import('../models/index.mjs').HistoryEntry} HistoryEntry
+ * @typedef {import('../models/History.mjs').HistoryMedia} HistoryMedia
+ * @typedef {import('../models/index.mjs').Media} Media
  * @typedef {{ user: User }} PopulateUser
  * @typedef {{ playlist: Playlist }} PopulatePlaylist
  * @typedef {{ media: Omit<HistoryMedia, 'media'> & { media: Media } }} PopulateMedia
@@ -44,7 +44,7 @@ export class Booth {
   #locker;
 
   /**
-   * @param {import('../Uwave')} uw
+   * @param {import('../Uwave.mjs').default} uw
    */
   constructor(uw) {
     this.#uw = uw;
@@ -401,7 +401,7 @@ export class Booth {
 }
 
 /**
- * @param {import('../Uwave').Boot} uw
+ * @param {import('../Uwave.mjs').Boot} uw
  */
 export default async function boothPlugin(uw) {
   uw.booth = new Booth(uw);

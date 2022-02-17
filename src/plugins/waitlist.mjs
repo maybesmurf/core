@@ -13,7 +13,7 @@ import routes from '../routes/waitlist.mjs';
 const { clamp } = lodash;
 
 /**
- * @typedef {import('../models').User} User
+ * @typedef {import('../models/index.mjs').User} User
  */
 
 /**
@@ -29,7 +29,7 @@ class Waitlist {
   #uw;
 
   /**
-   * @param {import('../Uwave')} uw
+   * @param {import('../Uwave.mjs').default} uw
    */
   constructor(uw) {
     this.#uw = uw;
@@ -340,7 +340,7 @@ class Waitlist {
 }
 
 /**
- * @param {import('../Uwave')} uw
+ * @param {import('../Uwave.mjs').default} uw
  * @returns {Promise<void>}
  */
 async function waitlistPlugin(uw) {

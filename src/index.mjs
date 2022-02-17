@@ -4,7 +4,7 @@ import HttpApi from './HttpApi.mjs';
 import SocketServer from './SocketServer.mjs';
 
 /**
- * @param {import('./Uwave').Options} opts
+ * @param {import('./Uwave.mjs').Options} opts
  * @returns {Uwave}
  */
 export default function uwave(opts) {

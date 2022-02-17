@@ -8,8 +8,8 @@ const { ObjectId } = mongoose.mongo;
 const debug = createDebug('uwave:http-api:now');
 
 /**
- * @param {import('../Uwave')} uw
- * @param {Promise<import('../models').Playlist | null>} activePlaylist
+ * @param {import('../Uwave.mjs').default} uw
+ * @param {Promise<import('../models/index.mjs').Playlist | null>} activePlaylist
  */
 async function getFirstItem(uw, activePlaylist) {
   try {
@@ -34,13 +34,13 @@ function toInt(str) {
 }
 
 /**
- * @param {import('../Uwave')} uw
+ * @param {import('../Uwave.mjs').default} uw
  */
 async function getOnlineUsers(uw) {
   const { User } = uw.models;
 
   const userIDs = await uw.redis.lrange('users', 0, -1);
-  /** @type {Omit<import('../models/User').LeanUser, 'activePlaylist' | 'exiled' | 'level'>[]} */
+  /** @type {Omit<import('../models/User.mjs').LeanUser, 'activePlaylist' | 'exiled' | 'level'>[]} */
   const users = await User.find({
     _id: {
       $in: userIDs.map((id) => new ObjectId(id)),
@@ -56,7 +56,7 @@ async function getOnlineUsers(uw) {
 }
 
 /**
- * @param {import('../Uwave')} uw
+ * @param {import('../Uwave.mjs').default} uw
  */
 async function getGuestsCount(uw) {
   const guests = await uw.redis.get('http-api:guests');
@@ -64,7 +64,7 @@ async function getGuestsCount(uw) {
 }
 
 /**
- * @type {import('../types').Controller}
+ * @type {import('../types.mjs').Controller}
  */
 async function getState(req) {
   const uw = req.uwave;

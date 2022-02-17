@@ -17,7 +17,7 @@ const debug = createDebug('uwave:http:users');
  */
 
 /**
- * @type {import('../types').AuthenticatedController<{}, GetUsersQuery>}
+ * @type {import('../types.mjs').AuthenticatedController<{}, GetUsersQuery>}
  */
 async function getUsers(req) {
   const { filter } = req.query;
@@ -41,7 +41,7 @@ async function getUsers(req) {
  */
 
 /**
- * @type {import('../types').Controller<GetUserParams>}
+ * @type {import('../types.mjs').Controller<GetUserParams>}
  */
 async function getUser(req) {
   const { users } = req.uwave;
@@ -63,7 +63,7 @@ async function getUser(req) {
  */
 
 /**
- * @type {import('../types').Controller<GetUserRolesParams>}
+ * @type {import('../types.mjs').Controller<GetUserRolesParams>}
  */
 async function getUserRoles(req) {
   const { acl, users } = req.uwave;
@@ -88,7 +88,7 @@ async function getUserRoles(req) {
  */
 
 /**
- * @type {import('../types').AuthenticatedController<AddUserRoleParams>}
+ * @type {import('../types.mjs').AuthenticatedController<AddUserRoleParams>}
  */
 async function addUserRole(req) {
   const { user: moderator } = req;
@@ -119,7 +119,7 @@ async function addUserRole(req) {
  */
 
 /**
- * @type {import('../types').AuthenticatedController<RemoveUserRoleParams>}
+ * @type {import('../types.mjs').AuthenticatedController<RemoveUserRoleParams>}
  */
 async function removeUserRole(req) {
   const { user: moderator } = req;
@@ -152,7 +152,7 @@ async function removeUserRole(req) {
  */
 
 /**
- * @type {import('../types').AuthenticatedController<ChangeUsernameParams, {}, ChangeUsernameBody>}
+ * @type {import('../types.mjs').AuthenticatedController<ChangeUsernameParams, {}, ChangeUsernameBody>}
  */
 async function changeUsername(req) {
   const { user: moderator } = req;
@@ -181,7 +181,7 @@ async function changeAvatar() {
 }
 
 /**
- * @param {import('../Uwave')} uw
+ * @param {import('../Uwave.mjs').default} uw
  * @param {import('mongodb').ObjectId} userID
  */
 async function disconnectUser(uw, userID) {
@@ -204,7 +204,7 @@ async function disconnectUser(uw, userID) {
  */
 
 /**
- * @type {import('../types').Controller<GetHistoryParams>}
+ * @type {import('../types.mjs').Controller<GetHistoryParams>}
  */
 async function getHistory(req) {
   const { id } = req.params;

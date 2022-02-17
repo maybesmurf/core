@@ -1,7 +1,7 @@
 /**
- *
- * @param {import('../HttpApi').HttpApi} httpApi
- * @param {import('../Uwave')} uw
+ * Make the Uwave server and the HTTP API class available on request objects.
+ * @param {import('../HttpApi.mjs').HttpApi} httpApi
+ * @param {import('../Uwave.mjs').default} uw
  * @returns {import('express').RequestHandler}
  */
 function attachUwaveMeta(httpApi, uw) {

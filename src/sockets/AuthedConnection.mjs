@@ -8,9 +8,9 @@ const debug = createDebug('uwave:api:sockets:authed');
 
 class AuthedConnection extends EventEmitter {
   /**
-   * @param {import('../Uwave')} uw
-   * @param {import('ws')} socket
-   * @param {import('../models').User} user
+   * @param {import('../Uwave.mjs').default} uw
+   * @param {import('ws').WebSocket} socket
+   * @param {import('../models/index.mjs').User} user
    */
   constructor(uw, socket, user) {
     super();

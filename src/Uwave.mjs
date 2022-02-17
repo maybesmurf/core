@@ -26,7 +26,7 @@ const DEFAULT_MONGO_URL = 'mongodb://localhost:27017/uwave';
 const DEFAULT_REDIS_URL = 'redis://localhost:6379';
 
 /**
- * @typedef {import('./Source').SourcePlugin} SourcePlugin
+ * @typedef {import('./Source.mjs').SourcePlugin} SourcePlugin
  */
 
 /**
@@ -39,7 +39,7 @@ const DEFAULT_REDIS_URL = 'redis://localhost:6379';
  *   port?: number,
  *   mongo?: string,
  *   redis?: string | RedisOptions,
- * } & httpApi.HttpApiOptions} Options
+ * } & import('./HttpApi.mjs').HttpApiOptions} Options
  */
 
 class UwaveServer extends EventEmitter {
@@ -54,63 +54,63 @@ class UwaveServer extends EventEmitter {
   // @ts-expect-error TS2564 Definitely assigned in a plugin
   express;
 
-  /** @type {import('./models').Models} */
+  /** @type {import('./models/index.mjs').Models} */
   // @ts-expect-error TS2564 Definitely assigned in a plugin
   models;
 
-  /** @type {import('./plugins/acl').Acl} */
+  /** @type {import('./plugins/acl.mjs').Acl} */
   // @ts-expect-error TS2564 Definitely assigned in a plugin
   acl;
 
-  /** @type {import('./plugins/bans').Bans} */
+  /** @type {import('./plugins/bans.mjs').Bans} */
   // @ts-expect-error TS2564 Definitely assigned in a plugin
   bans;
 
-  /** @type {import('./plugins/booth').Booth} */
+  /** @type {import('./plugins/booth.mjs').Booth} */
   // @ts-expect-error TS2564 Definitely assigned in a plugin
   booth;
 
-  /** @type {import('./plugins/chat').Chat} */
+  /** @type {import('./plugins/chat.mjs').Chat} */
   // @ts-expect-error TS2564 Definitely assigned in a plugin
   chat;
 
-  /** @type {import('./plugins/configStore').ConfigStore} */
+  /** @type {import('./plugins/configStore.mjs').ConfigStore} */
   // @ts-expect-error TS2564 Definitely assigned in a plugin
   config;
 
-  /** @type {import('./plugins/history').HistoryRepository} */
+  /** @type {import('./plugins/history.mjs').HistoryRepository} */
   // @ts-expect-error TS2564 Definitely assigned in a plugin
   history;
 
-  /** @type {import('./plugins/migrations').Migrate} */
+  /** @type {import('./plugins/migrations.mjs').Migrate} */
   // @ts-expect-error TS2564 Definitely assigned in a plugin
   migrate;
 
-  /** @type {import('./plugins/motd').MOTD} */
+  /** @type {import('./plugins/motd.mjs').MOTD} */
   // @ts-expect-error TS2564 Definitely assigned in a plugin
   motd;
 
-  /** @type {import('./plugins/passport').Passport} */
+  /** @type {import('./plugins/passport.mjs').Passport} */
   // @ts-expect-error TS2564 Definitely assigned in a plugin
   passport;
 
-  /** @type {import('./plugins/playlists').PlaylistsRepository} */
+  /** @type {import('./plugins/playlists.mjs').PlaylistsRepository} */
   // @ts-expect-error TS2564 Definitely assigned in a plugin
   playlists;
 
-  /** @type {import('./plugins/users').UsersRepository} */
+  /** @type {import('./plugins/users.mjs').UsersRepository} */
   // @ts-expect-error TS2564 Definitely assigned in a plugin
   users;
 
-  /** @type {import('./plugins/waitlist').Waitlist} */
+  /** @type {import('./plugins/waitlist.mjs').Waitlist} */
   // @ts-expect-error TS2564 Definitely assigned in a plugin
   waitlist;
 
-  /** @type {import('./HttpApi').HttpApi} */
+  /** @type {import('./HttpApi.mjs').HttpApi} */
   // @ts-expect-error TS2564 Definitely assigned in a plugin
   httpApi;
 
-  /** @type {import('./SocketServer')} */
+  /** @type {import('./SocketServer.mjs').default} */
   // @ts-expect-error TS2564 Definitely assigned in a plugin
   socketServer;
 
@@ -292,9 +292,9 @@ class UwaveServer extends EventEmitter {
   /**
    * Publish an event to the üWave channel.
    *
-   * @template {keyof import('./redisMessages').ServerActionParameters} CommandName
+   * @template {keyof import('./redisMessages.mjs').ServerActionParameters} CommandName
    * @param {CommandName} command
-   * @param {import('./redisMessages').ServerActionParameters[CommandName]} data
+   * @param {import('./redisMessages.mjs').ServerActionParameters[CommandName]} data
    */
   publish(command, data) {
     this.redis.publish('uwave', JSON.stringify({

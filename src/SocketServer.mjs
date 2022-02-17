@@ -17,7 +17,7 @@ const { debounce, isEmpty } = lodash;
 const debug = createDebug('uwave:api:sockets');
 
 /**
- * @typedef {import('./models').User} User
+ * @typedef {import('./models/index.mjs').User} User
  */
 
 /**
@@ -89,7 +89,7 @@ function has(object, property) {
 
 class SocketServer {
   /**
-   * @param {import('./Uwave').Boot} uw
+   * @param {import('./Uwave.mjs').Boot} uw
    * @param {{ secret: Buffer|string }} options
    */
   static async plugin(uw, options) {
@@ -135,14 +135,14 @@ class SocketServer {
   /**
    * Handlers for commands that come in from the server side.
    *
-   * @type {import('./redisMessages').ServerActions}
+   * @type {import('./redisMessages.mjs').ServerActions}
    */
   #serverActions;
 
   /**
    * Create a socket server.
    *
-   * @param {import('./Uwave')} uw üWave Core instance.
+   * @param {import('./Uwave.mjs').default} uw üWave Core instance.
    * @param {object} options Socket server options.
    * @param {number} [options.timeout] Time in seconds to wait for disconnected
    *     users to reconnect before removing them.
@@ -169,7 +169,7 @@ class SocketServer {
     this.#redisSubscription = uw.redis.duplicate();
 
     this.options = {
-      /** @type {(socket: import('ws') | undefined, err: Error) => void} */
+      /** @type {(socket: import('ws').WebSocket | undefined, err: Error) => void} */
       onError: (socket, err) => {
         throw err;
       },
@@ -475,7 +475,7 @@ class SocketServer {
   }
 
   /**
-   * @param {import('ws')} socket
+   * @param {import('ws').WebSocket} socket
    * @private
    */
   onSocketConnected(socket) {
@@ -488,7 +488,7 @@ class SocketServer {
   }
 
   /**
-   * @param {import('ws')} socket
+   * @param {import('ws').WebSocket} socket
    * @param {Error} error
    * @private
    */
@@ -523,7 +523,7 @@ class SocketServer {
   /**
    * Create a connection instance for an unauthenticated user.
    *
-   * @param {import('ws')} socket
+   * @param {import('ws').WebSocket} socket
    * @private
    */
   createGuestConnection(socket) {
@@ -554,7 +554,7 @@ class SocketServer {
   /**
    * Create a connection instance for an authenticated user.
    *
-   * @param {WebSocket} socket
+   * @param {import('ws').WebSocket} socket
    * @param {User} user
    * @returns {AuthedConnection}
    * @private
